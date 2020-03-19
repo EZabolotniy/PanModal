@@ -360,7 +360,7 @@ private extension PanModalPresentationController {
         guard let frame = containerView?.frame
             else { return }
 
-        let adjustedSize = CGSize(width: frame.size.width, height: frame.size.height - anchoredYPosition)
+        let adjustedSize = CGSize(width: frame.size.width, height: frame.size.height - anchoredYPosition - 20)
         let panFrame = panContainerView.frame
         panContainerView.frame.size = frame.size
         
@@ -371,7 +371,7 @@ private extension PanModalPresentationController {
             presentedView.frame.origin.y = max(yPosition, anchoredYPosition)
         }
         panContainerView.frame.origin.x = frame.origin.x
-        presentedViewController.view.frame = CGRect(origin: .zero, size: adjustedSize)
+        presentedViewController.view.frame = CGRect(origin: CGPoint(x: 0, y: 20), size: adjustedSize)
     }
 
     /**
@@ -380,8 +380,8 @@ private extension PanModalPresentationController {
      during initial view presentation in longForm (when view bounces)
      */
     func adjustPanContainerBackgroundColor() {
-        panContainerView.backgroundColor = presentedViewController.view.backgroundColor
-            ?? presentable?.panScrollable?.backgroundColor
+        panContainerView.backgroundColor = .white //presentedViewController.view.backgroundColor
+            //?? presentable?.panScrollable?.backgroundColor
     }
 
     /**
@@ -404,7 +404,7 @@ private extension PanModalPresentationController {
     func addDragIndicatorView(to view: UIView) {
         view.addSubview(dragIndicatorView)
         dragIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-        dragIndicatorView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: -Constants.indicatorYOffset).isActive = true
+        dragIndicatorView.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.indicatorYOffset).isActive = true
         dragIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         dragIndicatorView.widthAnchor.constraint(equalToConstant: Constants.dragIndicatorSize.width).isActive = true
         dragIndicatorView.heightAnchor.constraint(equalToConstant: Constants.dragIndicatorSize.height).isActive = true
