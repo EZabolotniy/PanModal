@@ -700,8 +700,8 @@ private extension PanModalPresentationController {
             /**
              Incase we have a situation where we have two containerViews in the same presentation
              */
-            guard self?.containerView != nil
-                else { return }
+//            guard self?.containerView != nil
+//                else { return }
 
             self?.didPanOnScrollView(scrollView, change: change)
         }
