@@ -360,7 +360,7 @@ private extension PanModalPresentationController {
         guard let frame = containerView?.frame
             else { return }
 
-        let adjustedSize = CGSize(width: frame.size.width, height: frame.size.height - anchoredYPosition - 36)
+        let adjustedSize = CGSize(width: frame.size.width, height: frame.size.height - anchoredYPosition)
         let panFrame = panContainerView.frame
         panContainerView.frame.size = frame.size
         
@@ -371,7 +371,7 @@ private extension PanModalPresentationController {
             presentedView.frame.origin.y = max(yPosition, anchoredYPosition)
         }
         panContainerView.frame.origin.x = frame.origin.x
-        presentedViewController.view.frame = CGRect(origin: CGPoint(x: 0, y: 36), size: adjustedSize)
+        presentedViewController.view.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: adjustedSize)
     }
 
     /**
